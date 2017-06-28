@@ -48,7 +48,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
 
 @implementation BBHTTPRequest
 {
-    NSUInteger _uploadSize; // Cached upload size, when available
+    unsigned long long _uploadSize; // Cached upload size, when available
     NSMutableDictionary* _headers; // Header storage; auto generated synthesizer for headers property will use this ivar
 }
 
@@ -129,7 +129,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
 
 #pragma mark Managing download behavior
 
-- (NSUInteger)downloadSize
+- (unsigned long long)downloadSize
 {
     return _response == nil ? 0 : _response.contentSize;
 }
@@ -154,7 +154,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
 
 #pragma mark Managing upload behavior
 
-- (BOOL)setUploadStream:(NSInputStream*)stream withContentType:(NSString*)contentType andSize:(NSUInteger)size;
+- (BOOL)setUploadStream:(NSInputStream*)stream withContentType:(NSString*)contentType andSize:(unsigned long long)size;
 {
     BBHTTPEnsureNotNil(stream);
     BBHTTPEnsureNotNil(contentType);
@@ -168,7 +168,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
     _uploadSize = size;
 
     [self setValue:contentType forHeader:H(ContentType)];
-    if (size > 0) [self setValue:[NSString stringWithFormat:@"%lu", (long)size] forHeader:H(ContentLength)];
+    if (size > 0) [self setValue:[NSString stringWithFormat:@"%llu", size] forHeader:H(ContentLength)];
 
     return YES;
 }
@@ -223,7 +223,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
     _uploadSize = [data length];
 
     [self setValue:contentType forHeader:H(ContentType)];
-    [self setValue:[NSString stringWithFormat:@"%lu", (long)_uploadSize] forHeader:H(ContentLength)];
+    [self setValue:[NSString stringWithFormat:@"%llu", _uploadSize] forHeader:H(ContentLength)];
 
     return YES;
 }

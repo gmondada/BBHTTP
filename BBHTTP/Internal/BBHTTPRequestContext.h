@@ -80,9 +80,9 @@ typedef NS_ENUM(NSUInteger, BBHTTPResponseState) {
 @property(assign, nonatomic, readonly, getter = hasUploadBeenAccepted) BOOL uploadAccepted;
 @property(assign, nonatomic, readonly, getter = isUploadPaused) BOOL uploadPaused;
 @property(assign, nonatomic, readonly, getter = hasUploadBeenAborted) BOOL uploadAborted;
-@property(assign, nonatomic, readonly) NSUInteger uploadedBytes;
-@property(assign, nonatomic, readonly) NSUInteger downloadSize;
-@property(assign, nonatomic, readonly) NSUInteger downloadedBytes;
+@property(assign, nonatomic, readonly) unsigned long long uploadedBytes;
+@property(assign, nonatomic, readonly) unsigned long long downloadSize;
+@property(assign, nonatomic, readonly) unsigned long long downloadedBytes;
 
 - (void)waitFor100ContinueBeforeUploading;
 - (void)pauseUpload;

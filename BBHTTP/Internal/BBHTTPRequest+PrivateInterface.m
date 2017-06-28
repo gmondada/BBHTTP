@@ -69,7 +69,7 @@
     return YES;
 }
 
-- (BOOL)uploadProgressedToCurrent:(NSUInteger)current ofTotal:(NSUInteger)total
+- (BOOL)uploadProgressedToCurrent:(unsigned long long)current ofTotal:(unsigned long long)total
 {
     if ([self hasFinished]) return NO;
 
@@ -84,7 +84,7 @@
     return YES;
 }
 
-- (BOOL)downloadProgressedToCurrent:(NSUInteger)current ofTotal:(NSUInteger)total
+- (BOOL)downloadProgressedToCurrent:(unsigned long long)current ofTotal:(unsigned long long)total
 {
     if ([self hasFinished]) return NO;
 

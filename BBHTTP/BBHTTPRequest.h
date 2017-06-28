@@ -56,8 +56,8 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 @private
     long long _startTimestamp;
     long long _endTimestamp;
-    NSUInteger _sentBytes;
-    NSUInteger _receivedBytes;
+    unsigned long long _sentBytes;
+    unsigned long long _receivedBytes;
     NSError* _error;
     BBHTTPResponse* _response;
 }
@@ -124,14 +124,14 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
  
  The *total* may be reported as `0` if the upload size is unknown (chunked transfer encoding from a stream).
  */
-@property(copy, nonatomic) void (^uploadProgressBlock)(NSUInteger current, NSUInteger total);
+@property(copy, nonatomic) void (^uploadProgressBlock)(unsigned long long current, unsigned long long total);
 
 /**
  Block that will be called every time a new chunk of data is read from the remote server, during the download phase.
 
  The *total* may be reported as `0` if the download size is unknown (chunked transfer encoding).
  */
-@property(copy, nonatomic) void (^downloadProgressBlock)(NSUInteger current, NSUInteger total);
+@property(copy, nonatomic) void (^downloadProgressBlock)(unsigned long long current, unsigned long long total);
 
 
 #pragma mark Managing download behavior
@@ -143,7 +143,7 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 @property(strong, nonatomic) id<BBHTTPContentHandler> responseContentHandler;
 
 /** The download size, in, bytes when available. */
-@property(assign, nonatomic, readonly) NSUInteger downloadSize;
+@property(assign, nonatomic, readonly) unsigned long long downloadSize;
 
 @property(assign, nonatomic, readonly) double downloadProgress;
 @property(assign, nonatomic, readonly) double downloadTransferRate;
@@ -183,7 +183,7 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 
  @return `YES` if this request is HTTP/1.1, `NO` otherwise.
  */
-- (BOOL)setUploadStream:(NSInputStream*)stream withContentType:(NSString*)contentType andSize:(NSUInteger)size;
+- (BOOL)setUploadStream:(NSInputStream*)stream withContentType:(NSString*)contentType andSize:(unsigned long long)size;
 
 /**
  Set the upload stream, from which this request will read data to perform the upload.
@@ -237,7 +237,7 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 @property(assign, nonatomic, readonly, getter = isUploadSizeKnown) BOOL uploadSizeKnown;
 
 /** The size, in bytes, of the upload, if any. */
-@property(assign, nonatomic, readonly) NSUInteger uploadSize;
+@property(assign, nonatomic, readonly) unsigned long long uploadSize;
 
 /** The stream from which the upload body will be read, if any. */
 @property(strong, nonatomic, readonly) NSInputStream* uploadStream;
@@ -456,8 +456,8 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 @property(assign, nonatomic, readonly, getter = hasStarted) BOOL started;
 @property(assign, nonatomic, readonly, getter = hasFinished) BOOL finished;
 @property(assign, nonatomic, readonly, getter = isExecuting) BOOL executing;
-@property(assign, nonatomic, readonly) NSUInteger sentBytes;
-@property(assign, nonatomic, readonly) NSUInteger receivedBytes;
+@property(assign, nonatomic, readonly) unsigned long long sentBytes;
+@property(assign, nonatomic, readonly) unsigned long long receivedBytes;
 
 @property(strong, nonatomic, readonly) NSError* error;
 @property(assign, nonatomic, readonly, getter = wasSuccessfullyExecuted) BOOL successfullyExecuted;

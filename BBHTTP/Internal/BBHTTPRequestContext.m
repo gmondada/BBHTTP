@@ -330,7 +330,7 @@
     [response setValue:headerValue forHeader:headerName];
 
     // If it's the Content-Length header, set our expected download size
-    if ([headerName isEqualToString:H(ContentLength)]) _downloadSize = (NSUInteger)[headerValue integerValue];
+    if ([headerName isEqualToString:H(ContentLength)]) _downloadSize = (unsigned long long)headerValue.longLongValue;
 
     BBHTTPLogTrace(@"%@ | Received header '%@: %@'.", self, headerName, headerValue);
 

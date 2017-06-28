@@ -489,7 +489,7 @@ static BOOL BBHTTPExecutorInitialized = NO;
     // Setup - prepare upload if required
     if ([request isUpload]) {
         curl_easy_setopt(handle, CURLOPT_UPLOAD, 1L);
-        curl_easy_setopt(handle, CURLOPT_INFILESIZE, [request uploadSize]);
+        curl_easy_setopt(handle, CURLOPT_INFILESIZE_LARGE, (curl_off_t)request.uploadSize);
         curl_easy_setopt(handle, CURLOPT_READFUNCTION, BBHTTPExecutorSendCallback);
         curl_easy_setopt(handle, CURLOPT_READDATA, context);
     } else {

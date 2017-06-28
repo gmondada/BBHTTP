@@ -32,7 +32,7 @@
 
 - (BOOL)executionStarted;
 - (BOOL)executionFailedWithFinalResponse:(BBHTTPResponse*)response error:(NSError*)error;
-- (BOOL)uploadProgressedToCurrent:(NSUInteger)current ofTotal:(NSUInteger)total;
-- (BOOL)downloadProgressedToCurrent:(NSUInteger)current ofTotal:(NSUInteger)total;
+- (BOOL)uploadProgressedToCurrent:(unsigned long long)current ofTotal:(unsigned long long)total;
+- (BOOL)downloadProgressedToCurrent:(unsigned long long)current ofTotal:(unsigned long long)total;
 
 @end

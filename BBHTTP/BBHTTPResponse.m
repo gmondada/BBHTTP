@@ -96,7 +96,7 @@ BBHTTPProtocolVersion BBHTTPProtocolVersionFromNSString(NSString* string)
 
 #pragma mark Interface
 
-- (void)finishWithContent:(id)content size:(NSUInteger)size successful:(BOOL)successful
+- (void)finishWithContent:(id)content size:(unsigned long long)size successful:(BOOL)successful
 {
     _content = content;
     _contentSize = size;
