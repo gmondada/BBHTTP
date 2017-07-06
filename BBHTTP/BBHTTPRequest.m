@@ -137,7 +137,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
 - (double)downloadProgress
 {
     // TODO this is not working because a _response is not set until the request ends.
-    NSUInteger toReceive = self.downloadSize;
+    unsigned long long toReceive = self.downloadSize;
     if (toReceive == 0) return 0;
 
     return (self.receivedBytes / (double)self.downloadSize) * 100;
@@ -266,7 +266,7 @@ NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed)
 
 - (double)uploadProgress
 {
-    NSUInteger toSend = self.uploadSize;
+    unsigned long long toSend = self.uploadSize;
     if (toSend == 0) return 0;
 
     return (self.sentBytes / (double)toSend) * 100;
