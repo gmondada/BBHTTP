@@ -110,7 +110,7 @@ extern NSString* NSStringFromBBTransferSpeed(BBTransferSpeed transferSpeed);
 /// -----------------------------
 
 /** Block that will be called when the request execution begins. */
-@property(copy, nonatomic) void (^startBlock)();
+@property(copy, nonatomic) void (^startBlock)(void);
 
 /**
  Block that will be called when the request terminates, either normally or abnormally.

@@ -215,7 +215,7 @@
 /**
  Convenience method that executes this request in the singleton instance of `<BBHTTPExecutor>`.
 
- @param finish The finish block that will be called when the request terminates normally.
+ @param completed The finish block that will be called when the request terminates normally.
  @param error The error block that will be called if the request terminates abnormally.
 
  @return `YES` if the request was accepted for execution by the executor, `NO` otherwise.
@@ -225,10 +225,10 @@
 - (BOOL)execute:(void (^)(BBHTTPResponse* response))completed error:(void (^)(NSError* error))error;
 
 - (BOOL)execute:(void (^)(BBHTTPResponse* response))completed error:(void (^)(NSError* error))error
-        finally:(void (^)())finally;
+        finally:(void (^)(void))finally;
 
 - (BOOL)execute:(void (^)(BBHTTPResponse* response))completed error:(void (^)(NSError* error))error
-      cancelled:(void (^)())cancelled finally:(void (^)())finally;
+      cancelled:(void (^)(void))cancelled finally:(void (^)(void))finally;
 
 /**
  Convenience method allows for extra request preparation steps and executes this request in the singleton instance of
@@ -236,7 +236,7 @@
 
  @param setup The setup block, will be called passing the current request as argument. Allows you to perform
  additional setup on the request before it is fired into the network.
- @param finish The finish block that will be called when the request terminates normally.
+ @param completed The finish block that will be called when the request terminates normally.
  @param error The error block that will be called if the request terminates abnormally.
 
  @return `YES` if the request was accepted for execution by the executor, `NO` otherwise.
@@ -247,9 +247,9 @@
         error:(void (^)(NSError* error))error;
 
 - (BOOL)setup:(void (^)(BBHTTPRequest* request))setup execute:(void (^)(BBHTTPResponse* response))completed
-        error:(void (^)(NSError* error))error finally:(void (^)())finally;
+        error:(void (^)(NSError* error))error finally:(void (^)(void))finally;
 
 - (BOOL)setup:(void (^)(BBHTTPRequest* request))setup execute:(void (^)(BBHTTPResponse* response))completed
-        error:(void (^)(NSError* error))error cancelled:(void (^)())cancelled finally:(void (^)())finally;
+        error:(void (^)(NSError* error))error cancelled:(void (^)(void))cancelled finally:(void (^)(void))finally;
 
 @end
