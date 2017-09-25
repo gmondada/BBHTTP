@@ -35,7 +35,7 @@
 
 NSUInteger BBHTTPLogLevel = BBHTTPLogLevelWarn;
 
-void BBHTTPLog(NSUInteger level, NSString* prefix, NSString* (^statement)())
+void BBHTTPLog(NSUInteger level, NSString* prefix, NSString* (^statement)(void))
 {
     // The block logging approach does incur some overhead but since default log level is WARN, the number of
     // statements supressed (trace, debug & info) is so high that it compensates to not evaluate the formatted

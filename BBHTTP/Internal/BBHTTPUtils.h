@@ -47,7 +47,7 @@
 
 extern NSUInteger BBHTTPLogLevel;
 
-extern void BBHTTPLog(NSUInteger level, NSString* prefix, NSString* (^statement)());
+extern void BBHTTPLog(NSUInteger level, NSString* prefix, NSString* (^statement)(void));
 
 #define BBHTTPLogError(fmt, ...)  BBHTTPLog(1, @"ERROR", ^{ return [NSString stringWithFormat:fmt, ##__VA_ARGS__]; });
 #define BBHTTPLogWarn(fmt, ...)   BBHTTPLog(2, @" WARN", ^{ return [NSString stringWithFormat:fmt, ##__VA_ARGS__]; });
