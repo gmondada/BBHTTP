@@ -679,7 +679,7 @@ static BOOL BBHTTPExecutorInitialized = NO;
             reason = @"An option passed to libcurl is not recognized/known.";
             break;
 
-        case CURLE_PEER_FAILED_VERIFICATION:
+        case CURLE_PEER_FAILED_VERIFICATION: // 60
             reason = @"The remote server's SSL certificate or SSH md5 fingerprint was deemed not OK.";
             break;
 
@@ -706,10 +706,7 @@ static BOOL BBHTTPExecutorInitialized = NO;
         case CURLE_SSL_CIPHER: // 59
             break;
 
-        case CURLE_SSL_CACERT: // 60
-            break;
-
-        case CURLE_BAD_CONTENT_ENCODING:
+        case CURLE_BAD_CONTENT_ENCODING: // 61
             break;
 
         case CURLE_FILESIZE_EXCEEDED: // 63
